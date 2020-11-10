@@ -27,4 +27,9 @@ public class DetailedNews extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(url);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,MainActivity.class));
+    }
 }
