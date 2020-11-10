@@ -7,13 +7,15 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:background="@drawable/card_edge"
         app:cardCornerRadius="10dp"
         android:onClick="loadDetail"
-        app:cardElevation="4dp">
+        app:cardElevation="8dp">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -35,7 +37,7 @@
                 android:padding="10dp"
                 android:text="Title"
                 android:textColor="@color/white"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -43,7 +45,6 @@
                 android:layout_gravity="bottom"
                 android:background="@color/white"
                 android:elevation="10dp"
-
                 android:orientation="vertical">
 
                 <TextView
@@ -55,7 +56,7 @@
                     android:fontFamily="@font/benton_sans_medium"
                     android:text="Author"
                     android:textColor="@color/cool_blue"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +69,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/benton_sans_medium"
                     android:textColor="@color/cool_blue"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
@@ -83,7 +84,7 @@
                     android:fontFamily="@font/benton_sans_medium"
                     android:text="Published"
                     android:textColor="@color/cool_blue"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,7 +98,7 @@
                     android:fontFamily="@font/benton_sans_medium"
                     android:text="Date"
                     android:textColor="@color/cool_blue"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/publishedDate" />
