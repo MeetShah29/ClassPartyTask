@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.progress_bar);
         shimmerFrameLayout=findViewById(R.id.shrimmer_layout);
         shimmerFrameLayout.startShimmer();
-
-
     }
 
     @Override
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        finishAffinity();
     }
 
     public void retriveJson(String url) {
