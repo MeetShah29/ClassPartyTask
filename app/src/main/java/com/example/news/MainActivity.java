@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<MetaData> call, Throwable t) {
                 Log.i("Connection issue",t.getLocalizedMessage());
+                Toast.makeText(getApplicationContext(),
+                        t.getLocalizedMessage(),
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
