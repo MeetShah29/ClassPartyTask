@@ -3,8 +3,11 @@ package com.example.news;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +19,7 @@ import android.provider.Settings;
 import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +29,8 @@ import com.example.news.Model.Items;
 import com.example.news.Model.MetaData;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
@@ -36,28 +42,31 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Url;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    ProgressBar progressBar;
-    ShimmerFrameLayout shimmerFrameLayout;
-    RecyclerView recyclerView;
-    Adapter adapter;
-    List<Items> items = new ArrayList<>();
-    List<Author> author = new ArrayList<>();
-    String urlParam = "https://www.wired.com/feed/";
+    private ShimmerFrameLayout shimmerFrameLayout;
+    private RecyclerView recyclerView;
+    private Adapter adapter;
+    private List<Items> items = new ArrayList<>();
+    private List<Author> author = new ArrayList<>();
+    private String urlParam = "https://www.wired.com/feed/";
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        retriveJson(urlParam);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        progressBar=findViewById(R.id.progress_bar);
-        shimmerFrameLayout=findViewById(R.id.shrimmer_layout);
+        shimmerFrameLayout = findViewById(R.id.shrimmer_layout);
         shimmerFrameLayout.startShimmer();
+
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        onLoadingSwipeRefresh(urlParam);
+
     }
 
     @Override
@@ -72,35 +81,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void retriveJson(String url) {
+        swipeRefreshLayout.setRefreshing(true);
         Call<MetaData> call = ApiClient.getInstance().getApi().getMetaData(url);
         call.enqueue(new Callback<MetaData>() {
             @Override
             public void onResponse(Call<MetaData> call, Response<MetaData> response) {
-                if (response.isSuccessful() && response.body().getItems()!= null ) {
+                if (response.isSuccessful() && response.body().getItems() != null) {
                     items.clear();
                     items = response.body().getItems();
                     author.clear();
                     adapter = new Adapter(MainActivity.this, items);
                     recyclerView.setAdapter(adapter);
-                    progressBar.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                     shimmerFrameLayout.stopShimmer();
                     shimmerFrameLayout.setVisibility(View.GONE);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             }
 
             @Override
             public void onFailure(Call<MetaData> call, Throwable t) {
-                Log.i("Connection issue",t.getLocalizedMessage());
-                Toast.makeText(getApplicationContext(),
-                        t.getLocalizedMessage(),
-                        Toast.LENGTH_LONG).show();
+                isConnected();
+                recyclerView.setVisibility(View.GONE);
+                if (t instanceof SocketTimeoutException) {
+                    retriveJson(urlParam);
+                } else if (t instanceof IOException) {
+                    // "Timeout";
+                } else {
+                    //Call was cancelled by user
+                    if (call.isCanceled()) {
+                        System.out.println("Call was cancelled forcefully");
+                    } else {
+                        //Generic error handling
+                        System.out.println("Network Error :: " + t.getLocalizedMessage());
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }
+
             }
         });
     }
 
     private void showCustomDialog() {
-        AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage("No internet connection available")
                 .setCancelable(false)
                 .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
@@ -121,12 +144,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void isConnected(){
-        ConnectivityManager connectivityManager= (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo connection= connectivityManager.getActiveNetworkInfo();
+    private void isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo connection = connectivityManager.getActiveNetworkInfo();
 
-        if(connection == null ||!connection.isConnected() || !connection.isAvailable()){
+        if (connection == null || !connection.isConnected() || !connection.isAvailable()) {
             showCustomDialog();
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        retriveJson(urlParam);
+    }
+
+    private void onLoadingSwipeRefresh(final String url) {
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                retriveJson(url);
+            }
+        });
     }
 }

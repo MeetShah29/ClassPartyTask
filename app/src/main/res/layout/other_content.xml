@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal">
+    android:id="@+id/categories_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:nestedScrollingEnabled="false">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/benton_sans_bold"
+        android:text="Categories"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:drawableEnd="@drawable/ic_forward_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
@@ -18,99 +33,208 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/dance" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/artist" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/chess" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/dance" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/colors" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/dance"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/drawing" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/exams" />
+            </RelativeLayout>
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/fitness" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/games" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/artist" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/dance" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/intermediate_drawing"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </RelativeLayout>
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/dance" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/gym" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/drawing" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/hotel" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/art"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/meditation" />
+            </RelativeLayout>
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/plantation" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/yoga" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/fitness" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/fitness"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/games" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/games"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/hotel" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/food"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/gym" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/gym"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/meditation" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/meditation"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/yoga" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:gravity="center"
+                    android:text="@string/yoga"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
 
         </LinearLayout>
     </HorizontalScrollView>

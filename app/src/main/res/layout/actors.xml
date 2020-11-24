@@ -1,76 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:apps="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/actor_layout">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:fontFamily="@font/benton_sans_bold"
+        android:text="Actors"
+        android:textColor="@color/black"
+        android:drawableEnd="@drawable/ic_forward_arrow"
+        android:textSize="18sp"
+        apps:layout_constraintStart_toStartOf="parent"
+        apps:layout_constraintTop_toTopOf="parent" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        apps:layout_constraintStart_toStartOf="parent"
+        apps:layout_constraintTop_toBottomOf="@+id/textView">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/chris"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/chris"
-                apps:shapeAppearanceOverlay="@style/circularImage"
-                apps:strokeColor="@color/cool_blue"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/chris"
+                apps:shapeAppearanceOverlay="@style/circularImage"
                 apps:strokeWidth="1dp" />
 
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chris"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/benton_sans_regular"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/christopherHemsworth" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ram"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ram"
                 apps:shapeAppearanceOverlay="@style/circularImage"
-                apps:strokeColor="@color/cool_blue"
-                android:layout_marginRight="10dp"
                 apps:strokeWidth="1dp" />
 
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ram"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/benton_sans_regular"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/ramCharan" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/robert"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/robert"
                 apps:shapeAppearanceOverlay="@style/circularImage"
-                apps:strokeColor="@color/cool_blue"
-                android:layout_marginRight="10dp"
                 apps:strokeWidth="1dp" />
 
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/robert"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/benton_sans_regular"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/robert" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/vijay"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/kabir"
                 apps:shapeAppearanceOverlay="@style/circularImage"
-                apps:strokeColor="@color/cool_blue"
-                android:layout_marginRight="10dp"
                 apps:strokeWidth="1dp" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/spiderman"
-                apps:shapeAppearanceOverlay="@style/circularImage"
-                apps:strokeColor="@color/cool_blue"
-                android:layout_marginRight="10dp"
-                apps:strokeWidth="1dp" />
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vijay"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/benton_sans_regular"
+                android:layout_centerHorizontal="true"
+                android:text="@string/vijay" />
+            </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/tom"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:layout_marginRight="10dp"
                 android:src="@drawable/tom"
                 apps:shapeAppearanceOverlay="@style/circularImage"
-                apps:strokeColor="@color/cool_blue"
-                android:layout_marginRight="10dp"
                 apps:strokeWidth="1dp" />
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tom"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/benton_sans_regular"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/tom" />
 
+
+            </RelativeLayout>
         </LinearLayout>
     </HorizontalScrollView>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
