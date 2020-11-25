@@ -8,6 +8,8 @@
     <string name="yoga">Yoga</string>
     <string name="dance">Dance</string>
     <string name="art">Art</string>
+    <string name="news">News</string>
+    <string name="watch_now">Watch Now</string>
     <string name="fitness">Fitness</string>
     <string name="games">Games</string>
     <string name="food">Food</string>
@@ -17,6 +19,9 @@
     <string name="book">Book</string>
     <string name="dailCourses">Daily Courses &#38; Classes</string>
     <string name="artClasses">Art Classes</string>
+    <string name="source">Source</string>
+    <string name="date">Date</string>
+    <string name="title">Title</string>
 
     <!--Time!-->
     <string name="thirtymins">30 mins</string>

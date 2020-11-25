@@ -14,7 +14,6 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/card_edge"
-        android:onClick="loadDetail"
         app:cardCornerRadius="10dp">
 
         <FrameLayout
@@ -28,14 +27,18 @@
                 android:background="@drawable/gradient" />
 
             <TextView
-                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/benton_sans_bold"
-                android:padding="10dp"
-                android:text="Title"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_text"
+                android:fontFamily="@font/benton_sans_regular"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:text="@string/news"
+                android:textColor="@color/white" />
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -46,60 +49,83 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvAuthor"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/benton_sans_medium"
-                    android:text="Author"
-                    android:textColor="@color/cool_blue"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="1"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.018"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/title" />
 
                 <TextView
                     android:id="@+id/tvSource"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/benton_sans_regular"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    tools:text="@string/source" />
+
+
+                <TextView
+                    android:id="@+id/tvAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/benton_sans_medium"
-                    android:textColor="@color/cool_blue"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/benton_sans_regular"
+                    android:text="@string/live"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
-                    tools:text="Source" />
-
-                <TextView
-                    android:id="@+id/publishedDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/benton_sans_medium"
-                    android:text="Published"
-                    android:textColor="@color/cool_blue"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvSource"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/benton_sans_regular"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/tvSource"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                    tools:text="@string/date" />
+
+                <Button
+                    android:id="@+id/watch_now"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/benton_sans_medium"
-                    android:text="Date"
-                    android:textColor="@color/cool_blue"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:fontFamily="@font/benton_sans_bold"
+                    android:text="@string/watch_now"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/publishedDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 

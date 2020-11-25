@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,6 +61,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         TextView tvTitle, tvSource, tvDate;
         ImageView imageView;
         CardView cardView;
+        Button watchNow;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -70,6 +72,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             tvDate = itemView.findViewById(R.id.tvDate);
             imageView = itemView.findViewById(R.id.image);
             cardView = itemView.findViewById(R.id.cardView);
+            watchNow=itemView.findViewById(R.id.watch_now);
         }
     }
 
@@ -84,10 +87,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         Items i = itemsList.get(position);
         holder.tvTitle.setText(i.getTitle());
-        holder.tvSource.setText(i.getAuthor().getName());
+        holder.tvSource.setText(i.getAuthor().getName()+" | ");
         holder.tvDate.setText(dateTime(i.getDate_published()));
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.watchNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(context,DetailedNews.class);
