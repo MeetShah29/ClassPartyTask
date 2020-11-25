@@ -220,7 +220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginRight="10dp"
+                android:paddingRight="25dp"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
